@@ -24,7 +24,15 @@ jobs:
         run: echo ${{ secrets.tg_token }}
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
+        if: failure()
         with:
           to: -4529873179 
           token: ${{ secrets.tg_token }}
           message: Ошибка
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        if: success()
+        with:
+          to: -4529873179 
+          token: ${{ secrets.tg_token }}
+          message: Успех
