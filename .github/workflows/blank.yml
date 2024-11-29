@@ -40,6 +40,9 @@ jobs:
       - name: Build docker image
         run: docker build -t ghcr.io/pobed1tel/lintandbuild/students-node-330:latest ./src/
 
+      - name: Run docker image
+        run: docker run ghcr.io/pobed1tel/lintandbuild/students-node-330:latest ./src/
+
       - uses: actions/checkout@v4
       - name: Run an one-line script
         run: echo ${{ secrets.tg_token }}
