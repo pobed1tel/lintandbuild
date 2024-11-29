@@ -40,15 +40,6 @@ jobs:
       - name: Build docker image
         run: docker build -t ghcr.io/pobed1tel/lintandbuild/students-node-330:latest ./src/
 
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }} 
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push docker image
-        run: docker push ghcr.io/pobed1tel/lintandbuild/students-node-330:latest
       - uses: actions/checkout@v4
       - name: Run an one-line script
         run: echo ${{ secrets.tg_token }}
