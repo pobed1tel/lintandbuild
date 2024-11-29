@@ -28,7 +28,7 @@ jobs:
         with:
           to: -4529873179 
           token: ${{ secrets.tg_token }}
-          message: Успех
+          message: Ошибка
       
           
   build:
@@ -51,6 +51,6 @@ jobs:
         with:
           to: -4529873179 
           token: ${{ secrets.tg_token }}
-          message: Успех
+          message: Ошибка
       
     
