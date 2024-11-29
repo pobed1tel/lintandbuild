@@ -2,7 +2,7 @@ FROM node:alpine
 
 WORKDIR /app
 
-COPY index.js ../package.json ../package-lock.json
+COPY src/index.js package.json package-lock.json
 
 RUN npm install
 
