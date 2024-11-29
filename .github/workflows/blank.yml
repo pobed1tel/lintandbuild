@@ -36,6 +36,14 @@ jobs:
     needs: [ lint ]
     steps:
       - uses: actions/checkout@v4
+      - name: Build docker image
+        run: docker build -t ghrc.io/lintandbuild/students-node-300:latest ./src/
+
+      - uses: actions/checkout@v4
+      - name: Run docker image
+        run: docker run -d -p 5050:80 --name web-server ngnix
+
+      - uses: actions/checkout@v4
       - name: Run an one-line script
         run: echo ${{ secrets.tg_token }}
       - name: send telegram message on push
