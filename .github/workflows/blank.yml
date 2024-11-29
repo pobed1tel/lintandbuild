@@ -27,20 +27,13 @@ jobs:
         
   notification:
     runs-on: ubuntu-latest
-    needs: [ build ]
     steps:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
-        if: failure()
+        if: always()
         with:
           to: -4529873179 
           token: ${{ secrets.tg_token }}
-          message: Ошибка
-      - name: send telegram message on push
-        uses: appleboy/telegram-action@master
-        if: success()
-        with:
-          to: -4529873179 
-          token: ${{ secrets.tg_token }}
-          message: Успех
+          message: ${{ job.status == 'success' && 'Успех' || 'Ошибка' }}
+      
     
