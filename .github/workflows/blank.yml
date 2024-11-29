@@ -36,14 +36,6 @@ jobs:
     needs: [ lint ]
     steps:
       - uses: actions/checkout@v4
-
-      - name: Build docker image
-        run: docker build -t  ./src/
-
-      - name: Run docker image
-        run: docker run --name test -d nginx:node
-
-      - uses: actions/checkout@v4
       - name: Run an one-line script
         run: echo ${{ secrets.tg_token }}
       - name: send telegram message on push
