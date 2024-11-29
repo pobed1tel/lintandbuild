@@ -38,10 +38,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build docker image
-        run: docker build -t ghcr.io/pobed1tel/lintandbuild/students-node-330:latest ./src/
+        run: docker build -t  ./src/
 
       - name: Run docker image
-        run: docker run ghcr.io/pobed1tel/lintandbuild/students-node-330:latest 
+        run: docker run --name test -d nginx:node
 
       - uses: actions/checkout@v4
       - name: Run an one-line script
