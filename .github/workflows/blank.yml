@@ -27,7 +27,7 @@ jobs:
         
   notification:
     runs-on: ubuntu-latest
-    needs: [ lint ]
+    needs: [ build ]
     steps:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
