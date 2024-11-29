@@ -47,7 +47,7 @@ jobs:
           message: Успех
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
-        if: falure()
+        if: failure()
         with:
           to: -4529873179 
           token: ${{ secrets.tg_token }}
