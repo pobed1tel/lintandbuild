@@ -8,4 +8,4 @@ app.get("/", (req, res) => {
   });
 });
 
-  app.listen(5050, () => console.log("Listening on http:/localhost:5050"));
+app.listen(5050, () => console.log("Listening on http:/localhost:5050"));
