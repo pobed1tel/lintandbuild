@@ -15,6 +15,20 @@ jobs:
         run: npm install
       - name: check code style
         run: npx prettier ./src/ --check
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        if: success()
+        with:
+          to: -4529873179 
+          token: ${{ secrets.tg_token }}
+          message: Успех
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        if: falure()
+        with:
+          to: -4529873179 
+          token: ${{ secrets.tg_token }}
+          message: Успех
       
           
   build:
@@ -24,16 +38,19 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run an one-line script
         run: echo ${{ secrets.tg_token }}
-        
-  notification:
-    runs-on: ubuntu-latest
-    steps:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
-        if: always(build, lint)
+        if: success()
         with:
           to: -4529873179 
           token: ${{ secrets.tg_token }}
-          message: ${{ job.status == 'success' && 'Успех' || 'Ошибка' }}
+          message: Успех
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        if: falure()
+        with:
+          to: -4529873179 
+          token: ${{ secrets.tg_token }}
+          message: Успех
       
     
