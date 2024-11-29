@@ -27,11 +27,10 @@ jobs:
         
   notification:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
-        if: always()
+        if: always(build, lint)
         with:
           to: -4529873179 
           token: ${{ secrets.tg_token }}
